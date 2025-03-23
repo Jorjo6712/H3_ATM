@@ -17,5 +17,27 @@ namespace H3_ATM.Entities
             CurrentBalance = initialBalance;
             Status = "Active";
         }
+        
+        public void Charge(decimal amount)
+        {
+            if (Status == "Locked")
+                throw new InvalidOperationException("Cannot charge a locked card.");
+            if (amount <= 0)
+                throw new InvalidOperationException("Charge amount must be greater than zero.");
+            CurrentBalance += amount;
+        }
+
+        public void MakePayment(decimal amount)
+        {
+            if (Status == "Locked")
+                throw new InvalidOperationException("Cannot make payment on a locked card.");
+            if (amount <= 0)
+                throw new InvalidOperationException("Payment amount must be greater than zero.");
+            CurrentBalance -= amount;
+        }
+        public void LockCard()
+        {
+            Status = "Locked";
+        }
     }
 }
