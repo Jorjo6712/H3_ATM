@@ -1,0 +1,6 @@
+@H3_ATM_HostAddress = http://localhost:5280
+
+GET {{H3_ATM_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
